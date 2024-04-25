@@ -4,10 +4,10 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler, normalize
-from konlpy.tag import Okt
 import jpype
-jvmpath = "/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home"
-jpype.startJVM(jvmpath)
+jpype.startJVM(jpype.getDefaultJVMPath())
+import os
+os.environ["JAVA_HOME"] = "/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home"
 
 def load_data():
     data = pd.read_csv('Dataset with image.csv')
@@ -16,6 +16,7 @@ def load_data():
 data = load_data()
 
 # Initialize tokenizer
+from konlpy.tag import Okt
 okt = Okt()
 
 def preprocess_text(text):
