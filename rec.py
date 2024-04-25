@@ -5,6 +5,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler, normalize
 from konlpy.tag import Okt
+import os
+os.environ["JAVA_HOME"] = "/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home"
 
 def load_data():
     data = pd.read_csv('Dataset with image.csv')
